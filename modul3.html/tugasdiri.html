@@ -18,28 +18,33 @@
 body{
     font-family:Arial, Helvetica, sans-serif;
     background:#06101f;
-    color:#f5f7fa;
+    color:white;
     line-height:1.6;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
+
 nav{
     height:70px;
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 8%;
-    position:fixed;
-    top:0;
-    width:100%;
-    z-index:10;
-    background:rgba(5,15,29,.95);
+
+    background:rgba(5,15,29,.96);
     border-bottom:1px solid #16263a;
 }
 
 .logo{
     font-size:22px;
-    font-weight:700;
+    font-weight:bold;
 }
 
 .logo span{
@@ -62,19 +67,26 @@ nav a:hover{
     color:#20a4f3;
 }
 
-/* SECTION */
+
+/* ================= SECTION ================= */
+
 section{
     padding:100px 8%;
 }
 
-/* HOME */
+
+/* ================= HOME ================= */
+
 .hero{
     min-height:100vh;
+
+    padding-top:120px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     gap:60px;
-    padding-top:120px;
 
     background:
     radial-gradient(
@@ -90,13 +102,17 @@ section{
 
 .hello{
     color:#20a4f3;
-    letter-spacing:4px;
+
     font-weight:bold;
+
+    letter-spacing:4px;
 }
 
 h1{
     font-size:64px;
+
     line-height:1.05;
+
     margin:15px 0;
 }
 
@@ -106,82 +122,110 @@ h1 span{
 
 .subtitle{
     font-size:23px;
+
     color:#dce7f3;
+
     margin-bottom:18px;
 }
 
 .desc{
     color:#aebdcd;
+
     max-width:560px;
+
+    line-height:1.8;
 }
 
-/* BUTTON */
+
+/* ================= BUTTON ================= */
+
 .buttons{
-    margin-top:28px;
     display:flex;
+
     gap:14px;
+
+    margin-top:28px;
 }
 
 .btn{
     padding:13px 24px;
+
     border-radius:30px;
+
     text-decoration:none;
+
     font-weight:bold;
+
     border:1px solid #20a4f3;
+
     color:#20a4f3;
 }
 
 .btn.primary{
     background:#20a4f3;
+
     color:white;
 }
 
-/* FOTO */
+
+/* ================= FOTO ================= */
+
 .photo-box{
     width:360px;
     height:460px;
 
-    border:2px solid #0874b9;
-    border-radius:28px;
-
     padding:10px;
+
+    border:2px solid #0874b9;
+
+    border-radius:28px;
 
     transform:rotate(5deg);
 
+    overflow:hidden;
+
     box-shadow:
-    0 0 45px rgba(32,164,243,.12);
+    0 0 45px rgba(32,164,243,.15);
 }
 
 .photo-box img{
     width:100%;
     height:100%;
 
+    display:block;
+
     object-fit:cover;
 
     border-radius:20px;
 
     transform:rotate(-5deg);
-
-    display:block;
 }
 
-/* ABOUT */
+
+/* ================= DARK SECTION ================= */
+
 .dark{
     background:#081524;
 }
 
+
+/* ================= TITLE ================= */
+
 .title{
     text-align:center;
+
     margin-bottom:50px;
 }
 
 .title small{
     color:#20a4f3;
+
     letter-spacing:3px;
 }
 
 .title h2{
     font-size:38px;
+
     margin:8px 0;
 }
 
@@ -189,11 +233,16 @@ h1 span{
     color:#9fb0c2;
 }
 
+
+/* ================= ABOUT ================= */
+
 .about{
     max-width:1000px;
+
     margin:auto;
 
     display:grid;
+
     grid-template-columns:1.5fr 1fr;
 
     gap:35px;
@@ -211,11 +260,19 @@ h1 span{
 
 .card h3{
     color:#20a4f3;
+
     margin-bottom:12px;
+}
+
+.card p{
+    color:#b7c5d4;
+
+    line-height:1.8;
 }
 
 .data p{
     padding:9px 0;
+
     border-bottom:1px solid #20364c;
 }
 
@@ -223,18 +280,20 @@ h1 span{
     color:white;
 }
 
-/* SKILLS */
+
+/* ================= SKILLS ================= */
+
 .skills{
+    max-width:1100px;
+
+    margin:auto;
+
     display:grid;
 
     grid-template-columns:
     repeat(3,1fr);
 
     gap:20px;
-
-    max-width:1100px;
-
-    margin:auto;
 }
 
 .skill{
@@ -250,18 +309,23 @@ h1 span{
 }
 
 .skill h3{
-    margin-bottom:8px;
     color:#20a4f3;
+
+    margin-bottom:8px;
 }
 
 .skill p{
     color:#aebdcd;
+
     font-size:14px;
 }
 
-/* HOBBY */
+
+/* ================= HOBBY ================= */
+
 .hobby{
     max-width:800px;
+
     margin:auto;
 
     text-align:center;
@@ -269,6 +333,7 @@ h1 span{
 
 .basket{
     font-size:70px;
+
     margin-bottom:15px;
 }
 
@@ -276,7 +341,9 @@ h1 span{
     color:#b4c2d0;
 }
 
-/* FOOTER */
+
+/* ================= FOOTER ================= */
+
 footer{
     text-align:center;
 
@@ -289,7 +356,9 @@ footer{
     font-size:14px;
 }
 
-/* RESPONSIVE */
+
+/* ================= RESPONSIVE ================= */
+
 @media(max-width:800px){
 
     nav ul{
@@ -297,11 +366,12 @@ footer{
     }
 
     nav a{
-        font-size:12px;
+        font-size:11px;
     }
 
     .hero{
         flex-direction:column;
+
         text-align:center;
     }
 
@@ -322,15 +392,18 @@ footer{
     .buttons{
         justify-content:center;
     }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
-<!-- NAVBAR -->
+
+<!-- ================= NAVBAR ================= -->
 
 <nav>
 
@@ -341,27 +414,39 @@ footer{
     <ul>
 
         <li>
-            <a href="#home">Home</a>
+            <a href="#home">
+                Home
+            </a>
         </li>
 
         <li>
-            <a href="#about">About</a>
+            <a href="#about">
+                About
+            </a>
         </li>
 
         <li>
-            <a href="#education">Education</a>
+            <a href="#education">
+                Education
+            </a>
         </li>
 
         <li>
-            <a href="#skills">Skills</a>
+            <a href="#skills">
+                Skills
+            </a>
         </li>
 
         <li>
-            <a href="#hobby">Hobby</a>
+            <a href="#hobby">
+                Hobby
+            </a>
         </li>
 
         <li>
-            <a href="#contact">Contact</a>
+            <a href="#contact">
+                Contact
+            </a>
         </li>
 
     </ul>
@@ -369,9 +454,12 @@ footer{
 </nav>
 
 
-<!-- HOME -->
+<!-- ================= HOME ================= -->
 
-<section class="hero" id="home">
+<section
+    class="hero"
+    id="home"
+>
 
     <div class="hero-text">
 
@@ -398,13 +486,20 @@ footer{
 
         </p>
 
+
         <div class="buttons">
 
-            <a class="btn primary" href="#about">
+            <a
+                class="btn primary"
+                href="#about"
+            >
                 Tentang Saya
             </a>
 
-            <a class="btn" href="#contact">
+            <a
+                class="btn"
+                href="#contact"
+            >
                 Hubungi Saya
             </a>
 
@@ -413,22 +508,29 @@ footer{
     </div>
 
 
-    <!-- FOTO KAMU SUDAH TERTANAM DI SINI -->
+    <!-- =================================================
+         FOTO BERLIAN LANGSUNG DI DALAM CODING
+         TIDAK MEMBUTUHKAN FILE FOTO TERPISAH
+         ================================================= -->
 
     <div class="photo-box">
 
         <img
-        src="data:image/jpeg;base64,BASE64_FOTO_KAMU_SUDAH_ADA_DI_FILE"
-        alt="Foto Berlian Cahya">
+            src="data:image/jpeg;base64,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"
+            alt="Foto Berlian Cahya"
+        >
 
     </div>
 
 </section>
 
 
-<!-- ABOUT -->
+<!-- ================= ABOUT ================= -->
 
-<section class="dark" id="about">
+<section
+    class="dark"
+    id="about"
+>
 
     <div class="title">
 
@@ -457,27 +559,33 @@ footer{
             </h3>
 
             <p>
+
                 Saya merupakan mahasiswa semester 5
                 Program Studi D4 Teknologi Rekayasa
                 Elektromedis di Universitas Muhammadiyah
                 PKU Surakarta.
+
             </p>
 
             <br>
 
             <p>
+
                 Saya tertarik pada perkembangan teknologi,
                 elektronika, sensor, mikrokontroler,
                 pemrograman, dan penerapannya pada
                 alat kesehatan.
+
             </p>
 
             <br>
 
             <p>
+
                 Di luar kegiatan akademik, saya senang
-                bermain basketball dan melakukan aktivitas
-                yang mendukung kebugaran.
+                bermain basketball sebagai aktivitas
+                olahraga.
+
             </p>
 
         </div>
@@ -526,7 +634,7 @@ footer{
 </section>
 
 
-<!-- EDUCATION -->
+<!-- ================= EDUCATION ================= -->
 
 <section id="education">
 
@@ -548,12 +656,13 @@ footer{
 
 
     <div
-    class="card"
-    style="
-    max-width:800px;
-    margin:auto;
-    text-align:center;
-    ">
+        class="card"
+        style="
+        max-width:800px;
+        margin:auto;
+        text-align:center;
+        "
+    >
 
         <h3>
             Universitas Muhammadiyah PKU Surakarta
@@ -572,9 +681,12 @@ footer{
 </section>
 
 
-<!-- SKILLS -->
+<!-- ================= SKILLS ================= -->
 
-<section class="dark" id="skills">
+<section
+    class="dark"
+    id="skills"
+>
 
     <div class="title">
 
@@ -683,7 +795,7 @@ footer{
 </section>
 
 
-<!-- HOBBY -->
+<!-- ================= HOBBY ================= -->
 
 <section id="hobby">
 
@@ -707,9 +819,11 @@ footer{
         </div>
 
         <p>
+
             Basketball merupakan salah satu hobi saya.
             Selain menyenangkan, olahraga ini membantu
             menjaga kebugaran dan melatih kerja sama tim.
+
         </p>
 
     </div>
@@ -717,9 +831,12 @@ footer{
 </section>
 
 
-<!-- CONTACT -->
+<!-- ================= CONTACT ================= -->
 
-<section class="dark" id="contact">
+<section
+    class="dark"
+    id="contact"
+>
 
     <div class="title">
 
@@ -739,12 +856,13 @@ footer{
 
 
     <div
-    class="card"
-    style="
-    max-width:650px;
-    margin:auto;
-    text-align:center;
-    ">
+        class="card"
+        style="
+        max-width:650px;
+        margin:auto;
+        text-align:center;
+        "
+    >
 
         <h3>
             Berlian Cahya
@@ -763,7 +881,7 @@ footer{
 </section>
 
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
