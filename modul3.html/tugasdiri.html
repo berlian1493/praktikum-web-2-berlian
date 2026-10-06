@@ -1,401 +1,566 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Berlian Cahya | Portfolio</title>
+    <title>Berlian Cahya | Portfolio</title>
 
-<style>
+    <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#06101f;
-    color:white;
-    line-height:1.6;
-}
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #06101f;
+            color: white;
+        }
 
-/* ================= NAVBAR ================= */
+        /* ================= NAVBAR ================= */
 
-nav{
-    height:70px;
-    width:100%;
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:1000;
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
 
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+            width: 100%;
+            height: 70px;
 
-    padding:0 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-    background:rgba(5,15,29,.96);
-    border-bottom:1px solid #16263a;
-}
+            padding: 0 8%;
 
-.logo{
-    font-size:22px;
-    font-weight:bold;
-}
+            background: rgba(3, 12, 25, 0.85);
 
-.logo span{
-    color:#20a4f3;
-}
+            backdrop-filter: blur(10px);
 
-nav ul{
-    display:flex;
-    gap:28px;
-    list-style:none;
-}
+            border-bottom: 1px solid rgba(255,255,255,0.1);
 
-nav a{
-    color:#dce7f3;
-    text-decoration:none;
-    font-size:14px;
-}
+            z-index: 1000;
+        }
 
-nav a:hover{
-    color:#20a4f3;
-}
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
 
+        .logo span {
+            color: #20a4f3;
+        }
 
-/* ================= SECTION ================= */
+        nav ul {
+            display: flex;
+            gap: 28px;
 
-section{
-    padding:100px 8%;
-}
+            list-style: none;
+        }
 
+        nav a {
+            color: white;
+            text-decoration: none;
 
-/* ================= HOME ================= */
+            font-size: 14px;
 
-.hero{
-    min-height:100vh;
+            transition: 0.3s;
+        }
 
-    padding-top:120px;
+        nav a:hover {
+            color: #20a4f3;
+        }
 
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
 
-    gap:60px;
+        /* ================= HOME ================= */
 
-    background:
-    radial-gradient(
-        circle at 80% 30%,
-        #0b3154 0,
-        #06101f 45%
-    );
-}
+        .hero {
 
-.hero-text{
-    max-width:620px;
-}
+            min-height: 100vh;
 
-.hello{
-    color:#20a4f3;
+            position: relative;
 
-    font-weight:bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    letter-spacing:4px;
-}
+            text-align: center;
 
-h1{
-    font-size:64px;
+            padding: 110px 8% 60px;
 
-    line-height:1.05;
+            overflow: hidden;
 
-    margin:15px 0;
-}
+            /* FOTO KAMU SEBAGAI BACKGROUND */
 
-h1 span{
-    color:#20a4f3;
-}
+            background-image:
+                linear-gradient(
+                    rgba(2, 10, 20, 0.70),
+                    rgba(2, 10, 20, 0.88)
+                ),
+                url("foto-berlian.jpg");
 
-.subtitle{
-    font-size:23px;
+            background-size: cover;
 
-    color:#dce7f3;
+            background-position: center;
 
-    margin-bottom:18px;
-}
+            background-attachment: fixed;
+        }
 
-.desc{
-    color:#aebdcd;
 
-    max-width:560px;
+        /* lapisan tambahan agar tulisan jelas */
 
-    line-height:1.8;
-}
+        .hero::before {
 
+            content: "";
 
-/* ================= BUTTON ================= */
+            position: absolute;
 
-.buttons{
-    display:flex;
+            inset: 0;
 
-    gap:14px;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(2,10,20,0.85),
+                    rgba(2,10,20,0.35),
+                    rgba(2,10,20,0.85)
+                );
 
-    margin-top:28px;
-}
+        }
 
-.btn{
-    padding:13px 24px;
 
-    border-radius:30px;
+        .hero-content {
 
-    text-decoration:none;
+            position: relative;
 
-    font-weight:bold;
+            z-index: 2;
 
-    border:1px solid #20a4f3;
+            max-width: 900px;
 
-    color:#20a4f3;
-}
+            display: flex;
 
-.btn.primary{
-    background:#20a4f3;
+            flex-direction: column;
 
-    color:white;
-}
+            align-items: center;
+        }
 
 
-/* ================= FOTO ================= */
+        .hello {
 
-.photo-box{
-    width:360px;
-    height:460px;
+            color: #20a4f3;
 
-    padding:10px;
+            font-weight: bold;
 
-    border:2px solid #0874b9;
+            letter-spacing: 5px;
 
-    border-radius:28px;
+            font-size: 15px;
+        }
 
-    transform:rotate(5deg);
 
-    overflow:hidden;
+        h1 {
 
-    box-shadow:
-    0 0 45px rgba(32,164,243,.15);
-}
+            font-size: 64px;
 
-.photo-box img{
-    width:100%;
-    height:100%;
+            line-height: 1;
 
-    display:block;
+            margin: 15px 0;
+        }
 
-    object-fit:cover;
 
-    border-radius:20px;
+        h1 span {
 
-    transform:rotate(-5deg);
-}
+            color: #20a4f3;
 
+        }
 
-/* ================= DARK SECTION ================= */
 
-.dark{
-    background:#081524;
-}
+        /* ================= FOTO PROFIL ================= */
 
+        .profile-photo {
 
-/* ================= TITLE ================= */
+            width: 230px;
 
-.title{
-    text-align:center;
+            height: 230px;
 
-    margin-bottom:50px;
-}
+            margin: 25px 0;
 
-.title small{
-    color:#20a4f3;
+            padding: 5px;
 
-    letter-spacing:3px;
-}
+            border-radius: 50%;
 
-.title h2{
-    font-size:38px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #20a4f3,
+                    white,
+                    #20a4f3
+                );
 
-    margin:8px 0;
-}
+            box-shadow:
+                0 0 40px rgba(32,164,243,0.5);
 
-.title p{
-    color:#9fb0c2;
-}
+        }
 
 
-/* ================= ABOUT ================= */
+        .profile-photo img {
 
-.about{
-    max-width:1000px;
+            width: 100%;
 
-    margin:auto;
+            height: 100%;
 
-    display:grid;
+            object-fit: cover;
 
-    grid-template-columns:1.5fr 1fr;
+            object-position: center;
 
-    gap:35px;
-}
+            border-radius: 50%;
 
-.card{
-    background:#0d1d30;
+            display: block;
 
-    border:1px solid #1a3854;
+            border: 4px solid #06101f;
+        }
 
-    border-radius:18px;
 
-    padding:28px;
-}
+        .subtitle {
 
-.card h3{
-    color:#20a4f3;
+            font-size: 22px;
 
-    margin-bottom:12px;
-}
+            color: #e4edf7;
 
-.card p{
-    color:#b7c5d4;
+            margin-bottom: 15px;
+        }
 
-    line-height:1.8;
-}
 
-.data p{
-    padding:9px 0;
+        .desc {
 
-    border-bottom:1px solid #20364c;
-}
+            max-width: 650px;
 
-.data b{
-    color:white;
-}
+            color: #d0dce8;
 
+            line-height: 1.8;
 
-/* ================= SKILLS ================= */
+            font-size: 16px;
+        }
 
-.skills{
-    max-width:1100px;
 
-    margin:auto;
+        /* ================= BUTTON ================= */
 
-    display:grid;
+        .buttons {
 
-    grid-template-columns:
-    repeat(3,1fr);
+            display: flex;
 
-    gap:20px;
-}
+            gap: 15px;
 
-.skill{
-    background:#0d1d30;
+            margin-top: 28px;
+        }
 
-    border:1px solid #1a3854;
 
-    border-radius:16px;
+        .btn {
 
-    padding:25px;
+            padding: 13px 25px;
 
-    text-align:center;
-}
+            border-radius: 30px;
 
-.skill h3{
-    color:#20a4f3;
+            border: 1px solid #20a4f3;
 
-    margin-bottom:8px;
-}
+            color: white;
 
-.skill p{
-    color:#aebdcd;
+            text-decoration: none;
 
-    font-size:14px;
-}
+            font-weight: bold;
 
+            transition: 0.3s;
+        }
 
-/* ================= HOBBY ================= */
 
-.hobby{
-    max-width:800px;
+        .btn:hover {
 
-    margin:auto;
+            transform: translateY(-3px);
 
-    text-align:center;
-}
+        }
 
-.basket{
-    font-size:70px;
 
-    margin-bottom:15px;
-}
+        .btn.primary {
 
-.hobby p{
-    color:#b4c2d0;
-}
+            background: #20a4f3;
 
+        }
 
-/* ================= FOOTER ================= */
 
-footer{
-    text-align:center;
+        /* ================= SECTION ================= */
 
-    padding:30px;
+        section:not(.hero) {
 
-    background:#040b15;
+            padding: 100px 8%;
 
-    color:#8fa1b5;
+        }
 
-    font-size:14px;
-}
 
+        .dark {
 
-/* ================= RESPONSIVE ================= */
+            background: #081524;
 
-@media(max-width:800px){
+        }
 
-    nav ul{
-        gap:12px;
-    }
 
-    nav a{
-        font-size:11px;
-    }
+        /* ================= TITLE ================= */
 
-    .hero{
-        flex-direction:column;
+        .title {
 
-        text-align:center;
-    }
+            text-align: center;
 
-    h1{
-        font-size:48px;
-    }
+            margin-bottom: 45px;
 
-    .photo-box{
-        width:280px;
-        height:350px;
-    }
+        }
 
-    .about,
-    .skills{
-        grid-template-columns:1fr;
-    }
 
-    .buttons{
-        justify-content:center;
-    }
+        .title small {
 
-}
+            color: #20a4f3;
 
-</style>
+            letter-spacing: 3px;
+
+        }
+
+
+        .title h2 {
+
+            font-size: 38px;
+
+            margin: 8px 0;
+
+        }
+
+
+        .title p {
+
+            color: #9fb0c2;
+
+        }
+
+
+        /* ================= ABOUT ================= */
+
+        .about {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 1.5fr 1fr;
+
+            gap: 30px;
+
+        }
+
+
+        .card {
+
+            background: #0d1d30;
+
+            border: 1px solid #1a3854;
+
+            border-radius: 18px;
+
+            padding: 28px;
+
+        }
+
+
+        .card h3 {
+
+            color: #20a4f3;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .card p {
+
+            color: #b7c5d4;
+
+            line-height: 1.8;
+
+        }
+
+
+        .data p {
+
+            padding: 9px 0;
+
+            border-bottom: 1px solid #20364c;
+
+        }
+
+
+        .data b {
+
+            color: white;
+
+        }
+
+
+        /* ================= SKILLS ================= */
+
+        .skills {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .skill {
+
+            background: #0d1d30;
+
+            border: 1px solid #1a3854;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            text-align: center;
+
+            transition: 0.3s;
+
+        }
+
+
+        .skill:hover {
+
+            transform: translateY(-5px);
+
+            border-color: #20a4f3;
+
+        }
+
+
+        .skill h3 {
+
+            color: #20a4f3;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .skill p {
+
+            color: #aebdcd;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* ================= HOBBY ================= */
+
+        .hobby {
+
+            max-width: 800px;
+
+            margin: auto;
+
+            text-align: center;
+
+        }
+
+
+        .basket {
+
+            font-size: 70px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .hobby p {
+
+            color: #b4c2d0;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 30px;
+
+            background: #040b15;
+
+            color: #8fa1b5;
+
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width: 800px) {
+
+            nav ul {
+
+                gap: 10px;
+
+            }
+
+            nav a {
+
+                font-size: 10px;
+
+            }
+
+            h1 {
+
+                font-size: 48px;
+
+            }
+
+            .profile-photo {
+
+                width: 190px;
+
+                height: 190px;
+
+            }
+
+            .about,
+
+            .skills {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .buttons {
+
+                justify-content: center;
+
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -408,45 +573,36 @@ footer{
 <nav>
 
     <div class="logo">
+
         Berlian<span>.</span>
+
     </div>
+
 
     <ul>
 
         <li>
-            <a href="#home">
-                Home
-            </a>
+            <a href="#home">Home</a>
         </li>
 
         <li>
-            <a href="#about">
-                About
-            </a>
+            <a href="#about">About</a>
         </li>
 
         <li>
-            <a href="#education">
-                Education
-            </a>
+            <a href="#education">Education</a>
         </li>
 
         <li>
-            <a href="#skills">
-                Skills
-            </a>
+            <a href="#skills">Skills</a>
         </li>
 
         <li>
-            <a href="#hobby">
-                Hobby
-            </a>
+            <a href="#hobby">Hobby</a>
         </li>
 
         <li>
-            <a href="#contact">
-                Contact
-            </a>
+            <a href="#contact">Contact</a>
         </li>
 
     </ul>
@@ -456,26 +612,49 @@ footer{
 
 <!-- ================= HOME ================= -->
 
-<section
-    class="hero"
-    id="home"
->
+<section class="hero" id="home">
 
-    <div class="hero-text">
+    <div class="hero-content">
+
 
         <div class="hello">
+
             HELLO, I'M
+
         </div>
+
 
         <h1>
+
             Berlian
-            <br>
-            <span>Cahya.</span>
+
+            <span>
+
+                Cahya.
+
+            </span>
+
         </h1>
 
-        <div class="subtitle">
-            Mahasiswa D4 Teknologi Rekayasa Elektromedis
+
+        <!-- FOTO PROFIL DI TENGAH -->
+
+        <div class="profile-photo">
+
+            <img
+                src="foto-berlian.jpg"
+                alt="Foto Berlian Cahya"
+            >
+
         </div>
+
+
+        <div class="subtitle">
+
+            Mahasiswa D4 Teknologi Rekayasa Elektromedis
+
+        </div>
+
 
         <p class="desc">
 
@@ -493,32 +672,22 @@ footer{
                 class="btn primary"
                 href="#about"
             >
+
                 Tentang Saya
+
             </a>
+
 
             <a
                 class="btn"
                 href="#contact"
             >
+
                 Hubungi Saya
+
             </a>
 
         </div>
-
-    </div>
-
-
-    <!-- =================================================
-         FOTO BERLIAN LANGSUNG DI DALAM CODING
-         TIDAK MEMBUTUHKAN FILE FOTO TERPISAH
-         ================================================= -->
-
-    <div class="photo-box">
-
-        <img
-            src="data:image/jpeg;base64,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"
-            alt="Foto Berlian Cahya"
-        >
 
     </div>
 
@@ -558,6 +727,7 @@ footer{
                 Halo, saya Berlian Cahya 👋
             </h3>
 
+
             <p>
 
                 Saya merupakan mahasiswa semester 5
@@ -567,24 +737,26 @@ footer{
 
             </p>
 
+
             <br>
+
 
             <p>
 
-                Saya tertarik pada perkembangan teknologi,
-                elektronika, sensor, mikrokontroler,
-                pemrograman, dan penerapannya pada
-                alat kesehatan.
+                Saya tertarik pada teknologi, elektronika,
+                sensor, mikrokontroler, pemrograman,
+                dan penerapannya pada alat kesehatan.
 
             </p>
 
+
             <br>
+
 
             <p>
 
                 Di luar kegiatan akademik, saya senang
-                bermain basketball sebagai aktivitas
-                olahraga.
+                bermain basketball sebagai aktivitas olahraga.
 
             </p>
 
@@ -597,30 +769,36 @@ footer{
                 Data Diri
             </h3>
 
+
             <p>
                 <b>Nama:</b>
                 Berlian Cahya
             </p>
+
 
             <p>
                 <b>NIM:</b>
                 1202405025
             </p>
 
+
             <p>
                 <b>Kampus:</b>
                 UMPKU Surakarta
             </p>
+
 
             <p>
                 <b>Semester:</b>
                 5
             </p>
 
+
             <p>
                 <b>Prodi:</b>
                 D4 Teknologi Rekayasa Elektromedis
             </p>
+
 
             <p>
                 <b>Hobi:</b>
@@ -790,6 +968,7 @@ footer{
 
         </div>
 
+
     </div>
 
 </section>
@@ -817,6 +996,7 @@ footer{
         <div class="basket">
             🏀
         </div>
+
 
         <p>
 
