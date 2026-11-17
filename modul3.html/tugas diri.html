@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Berlian Cahya | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #07111f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(7, 17, 31, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #28a9ff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #d9e7f5;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #28a9ff;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 100vh;
+            padding: 130px 8% 80px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 70px;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(0, 143, 255, 0.20),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 20% 80%,
+                    rgba(0, 91, 255, 0.12),
+                    transparent 30%
+                ),
+                #07111f;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .hello {
+            color: #28a9ff;
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            line-height: 1.05;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #28a9ff;
+        }
+
+        .hero h2 {
+            font-size: 25px;
+            color: #c4d7e9;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        .hero p {
+            color: #9db1c5;
+            font-size: 17px;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #168fe0;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #28a9ff;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(40,169,255,0.3);
+        }
+
+        .btn-outline {
+            border: 1px solid #168fe0;
+            color: #28a9ff;
+        }
+
+        .btn-outline:hover {
+            background: #168fe0;
+            color: white;
+            transform: translateY(-4px);
+        }
+
+
+        /* ================= FOTO ================= */
+
+        .hero-photo {
+            position: relative;
+            width: 360px;
+            height: 480px;
+            flex-shrink: 0;
+        }
+
+        .hero-photo::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #168fe0;
+            border-radius: 30px;
+            transform: rotate(6deg);
+            right: -18px;
+            top: 18px;
+            opacity: 0.5;
+        }
+
+        .hero-photo img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 30px;
+            border: 3px solid rgba(40,169,255,0.5);
+            box-shadow:
+                0 0 40px rgba(0,145,255,0.20),
+                0 25px 60px rgba(0,0,0,0.5);
+        }
+
+
+        /* ================= GENERAL SECTION ================= */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title small {
+            color: #28a9ff;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-top: 8px;
+        }
+
+        .section-title p {
+            color: #8fa5b9;
+            max-width: 600px;
+            margin: 10px auto 0;
+        }
+
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            background: #091827;
+        }
+
+        .about-container {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #9db1c5;
+            margin-bottom: 15px;
+        }
+
+        .biodata {
+            background: #0d1d30;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .data {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .data:last-child {
+            border-bottom: none;
+        }
+
+        .data span:first-child {
+            color: #7f95aa;
+        }
+
+        .data span:last-child {
+            text-align: right;
+            font-weight: bold;
+            color: #e8f4ff;
+        }
+
+
+        /* ================= EDUCATION ================= */
+
+        .education-card {
+            max-width: 900px;
+            margin: auto;
+            background: linear-gradient(
+                135deg,
+                #0c243b,
+                #0b1a2d
+            );
+
+            padding: 40px;
+            border-radius: 25px;
+            border-left: 5px solid #168fe0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .education-card .year {
+            color: #28a9ff;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .education-card h3 {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .education-card h4 {
+            color: #a8bfd3;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .education-card p {
+            color: #8fa5b9;
+        }
+
+
+        /* ================= SKILLS ================= */
+
+        .skills {
+            background: #091827;
+        }
+
+        .skill-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .skill-card {
+            background: #0d1d30;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            border-color: #168fe0;
+            box-shadow: 0 15px 35px rgba(0,145,255,0.12);
+        }
+
+        .skill-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            color: #849aae;
+            font-size: 14px;
+        }
+
+
+        /* ================= HOBBY ================= */
+
+        .hobby-container {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .basket {
+            height: 350px;
+            border-radius: 25px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 120px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(40,169,255,0.20),
+                    transparent 60%
+                ),
+                #0d1d30;
+
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .hobby-text h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .hobby-text p {
+            color: #91a6ba;
+            margin-bottom: 15px;
+        }
+
+        .hobby-list {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            padding: 8px 15px;
+            border-radius: 20px;
+            background: #0d263d;
+            color: #5fc1ff;
+            font-size: 13px;
+        }
+
+
+        /* ================= INTEREST ================= */
+
+        .interest {
+            background: #091827;
+        }
+
+        .interest-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .interest-card {
+            padding: 25px;
+            background: #0d1d30;
+            border-radius: 18px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .interest-card div {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .interest-card p {
+            color: #b6c9da;
+        }
+
+
+        /* ================= GOAL ================= */
+
+        .goal {
+            padding: 100px 8%;
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #07538a,
+                    #0b8bcf
+                );
+        }
+
+        .goal h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .goal p {
+            max-width: 700px;
+            margin: auto auto 30px;
+            color: #d9f0ff;
+        }
+
+
+        /* ================= CONTACT ================= */
+
+        .contact-container {
+            max-width: 800px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: #0d1d30;
+            padding: 25px;
+            text-align: center;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .contact-card div {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            color: #91a6ba;
+            font-size: 14px;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #040b14;
+            padding: 35px 8%;
+            text-align: center;
+            color: #73889b;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        footer strong {
+            color: #28a9ff;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width: 900px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            .hero-text {
+                max-width: 700px;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-photo {
+                width: 300px;
+                height: 400px;
+            }
+
+            .about-container,
+            .hobby-container {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .interest-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media(max-width: 600px) {
+
+            nav {
+                position: relative;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 80px 6% 70px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .hero-photo {
+                width: 260px;
+                height: 350px;
+            }
+
+            section {
+                padding: 70px 6%;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .skill-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .interest-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .data {
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .data span:last-child {
+                text-align: left;
+            }
+
+            .goal h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        Berlian<span>.</span>
+    </div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#hobby">Hobby</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<header class="hero" id="home">
+
+    <div class="hero-text">
+
+        <div class="hello">
+            HELLO, I'M
+        </div>
+
+        <h1>
+            Berlian<br>
+            <span>Cahya.</span>
+        </h1>
+
+        <h2>
+            Mahasiswa D4 Teknologi Rekayasa Elektromedis
+        </h2>
+
+        <p>
+            Mahasiswa semester 5 di Universitas Muhammadiyah PKU
+            Surakarta yang memiliki ketertarikan pada teknologi,
+            elektronika, pemrograman, dan pengembangan alat kesehatan.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#about" class="btn btn-primary">
+                Tentang Saya
+            </a>
+
+            <a href="#contact" class="btn btn-outline">
+                Hubungi Saya
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-photo">
+
+        <img
+            src="foto-berlian.jpg"
+            alt="Foto Berlian Cahya"
+        >
+
+    </div>
+
+</header>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <div class="section-title">
+
+        <small>ABOUT ME</small>
+
+        <h2>Tentang Saya</h2>
+
+        <p>
+            Mengenal lebih dekat profil dan perjalanan pendidikan saya.
+        </p>
+
+    </div>
+
+
+    <div class="about-container">
+
+
+        <div class="about-text">
+
+            <h3>Halo, saya Berlian Cahya 👋</h3>
+
+            <p>
+                Saya merupakan mahasiswa semester 5 Program Studi
+                D4 Teknologi Rekayasa Elektromedis di Universitas
+                Muhammadiyah PKU Surakarta.
+            </p>
+
+            <p>
+                Saya memiliki ketertarikan terhadap perkembangan
+                teknologi, terutama teknologi yang dapat diterapkan
+                dalam bidang kesehatan dan alat elektromedis.
+            </p>
+
+            <p>
+                Selain kegiatan akademik, saya juga senang bermain
+                basket sebagai salah satu cara untuk menjaga kebugaran
+                dan mengisi waktu luang.
+            </p>
+
+        </div>
+
+
+        <div class="biodata">
+
+            <div class="data">
+                <span>Nama</span>
+                <span>Berlian Cahya</span>
+            </div>
+
+            <div class="data">
+                <span>NIM</span>
+                <span>1202405025</span>
+            </div>
+
+            <div class="data">
+                <span>Kampus</span>
+                <span>UMPKU Surakarta</span>
+            </div>
+
+            <div class="data">
+                <span>Program Studi</span>
+                <span>D4 Elektromedis</span>
+            </div>
+
+            <div class="data">
+                <span>Semester</span>
+                <span>5</span>
+            </div>
+
+            <div class="data">
+                <span>Hobi</span>
+                <span>Basket</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= EDUCATION ================= -->
+
+<section id="education">
+
+    <div class="section-title">
+
+        <small>EDUCATION</small>
+
+        <h2>Pendidikan</h2>
+
+    </div>
+
+
+    <div class="education-card">
+
+        <div class="year">
+            2024 — Sekarang
+        </div>
+
+        <h3>
+            Universitas Muhammadiyah PKU Surakarta
+        </h3>
+
+        <h4>
+            D4 Teknologi Rekayasa Elektromedis
+        </h4>
+
+        <p>
+            Saat ini saya sedang menempuh pendidikan semester 5
+            dengan mempelajari berbagai bidang yang berkaitan
+            dengan teknologi elektromedis, elektronika, sensor,
+            sistem kendali, mikrokontroler, dan peralatan kesehatan.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SKILLS ================= -->
+
+<section class="skills" id="skills">
+
+    <div class="section-title">
+
+        <small>MY SKILLS</small>
+
+        <h2>Kemampuan</h2>
+
+        <p>
+            Beberapa bidang yang sedang saya pelajari dan kembangkan.
+        </p>
+
+    </div>
+
+
+    <div class="skill-grid">
+
+
+        <div class="skill-card">
+
+            <div class="skill-icon">⚡</div>
+
+            <h3>Elektronika</h3>
+
+            <p>
+                Dasar elektronika, rangkaian, komponen elektronik,
+                dan penerapannya pada alat elektromedis.
+            </p>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <div class="skill-icon">🔧</div>
+
+            <h3>Arduino</h3>
+
+            <p>
+                Pemrograman mikrokontroler untuk membuat prototype
+                dan sistem kontrol sederhana.
+            </p>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <div class="skill-icon">💻</div>
+
+            <h3>Pemrograman</h3>
+
+            <p>
+                Mempelajari HTML, CSS, serta pemrograman untuk
+                mendukung pengembangan sistem berbasis teknologi.
+            </p>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <div class="skill-icon">🎛️</div>
+
+            <h3>Sistem Kendali</h3>
+
+            <p>
+                Mempelajari konsep kontrol dan penerapannya pada
+                sistem elektronik dan peralatan elektromedis.
+            </p>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <div class="skill-icon">📡</div>
+
+            <h3>Sensor & Transduser</h3>
+
+            <p>
+                Memahami penggunaan sensor untuk mengukur berbagai
+                parameter pada sistem elektromedis.
+            </p>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <div class="skill-icon">🏥</div>
+
+            <h3>Alat Kesehatan</h3>
+
+            <p>
+                Mempelajari prinsip kerja, penggunaan, pemeliharaan,
+                dan pengembangan peralatan elektromedis.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOBBY ================= -->
+
+<section id="hobby">
+
+    <div class="section-title">
+
+        <small>MY HOBBY</small>
+
+        <h2>Basket 🏀</h2>
+
+    </div>
+
+
+    <div class="hobby-container">
+
+        <div class="basket">
+            🏀
+        </div>
+
+
+        <div class="hobby-text">
+
+            <h3>Basket adalah salah satu hobi saya.</h3>
+
+            <p>
+                Di luar kegiatan perkuliahan, saya senang bermain
+                basket. Selain menyenangkan, olahraga ini membantu
+                menjaga kebugaran tubuh dan melatih kerja sama tim.
+            </p>
+
+            <p>
+                Bagi saya, basket juga mengajarkan konsistensi,
+                komunikasi, kerja sama, dan semangat untuk terus
+                berkembang.
+            </p>
+
+
+            <div class="hobby-list">
+
+                <span class="tag">Basketball</span>
+
+                <span class="tag">Sport</span>
+
+                <span class="tag">Teamwork</span>
+
+                <span class="tag">Fitness</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= INTEREST ================= -->
+
+<section class="interest">
+
+    <div class="section-title">
+
+        <small>MY INTEREST</small>
+
+        <h2>Hal yang Saya Minati</h2>
+
+    </div>
+
+
+    <div class="interest-grid">
+
+
+        <div class="interest-card">
+
+            <div>🏥</div>
+
+            <p>Teknologi Kesehatan</p>
+
+        </div>
+
+
+        <div class="interest-card">
+
+            <div>🤖</div>
+
+            <p>IoT & Mikrokontroler</p>
+
+        </div>
+
+
+        <div class="interest-card">
+
+            <div>⚙️</div>
+
+            <p>Elektronika</p>
+
+        </div>
+
+
+        <div class="interest-card">
+
+            <div>💡</div>
+
+            <p>Inovasi Alat Kesehatan</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= GOAL ================= -->
+
+<section class="goal">
+
+    <h2>My Future Goal</h2>
+
+    <p>
+        Saya ingin terus mengembangkan kemampuan di bidang teknologi
+        elektromedis dan mampu menciptakan atau mengembangkan
+        teknologi yang dapat memberikan manfaat dalam dunia kesehatan.
+    </p>
+
+    <a href="#contact" class="btn btn-outline">
+        Let's Connect →
+    </a>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact">
+
+    <div class="section-title">
+
+        <small>CONTACT</small>
+
+        <h2>Hubungi Saya</h2>
+
+        <p>
+            Jangan ragu untuk terhubung dan berdiskusi.
+        </p>
+
+    </div>
+
+
+    <div class="contact-container">
+
+
+        <div class="contact-card">
+
+            <div>🎓</div>
+
+            <h3>Mahasiswa</h3>
+
+            <p>
+                D4 Teknologi Rekayasa Elektromedis
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div>📍</div>
+
+            <h3>Location</h3>
+
+            <p>
+                Surakarta, Jawa Tengah
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div>💻</div>
+
+            <h3>Focus</h3>
+
+            <p>
+                Teknologi & Alat Kesehatan
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 <strong>Berlian Cahya</strong>
+    </p>
+
+    <p>
+        D4 Teknologi Rekayasa Elektromedis — UMPKU Surakarta
+    </p>
+
+</footer>
+
+
+</body>
+</html>

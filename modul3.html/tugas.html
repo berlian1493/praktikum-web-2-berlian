@@ -1,0 +1,652 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UMPKU Surakarta</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f9ff;
+    color: #18324a;
+}
+
+/* NAVBAR */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(5, 65, 120, 0.96);
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #69d5ff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #69d5ff;
+}
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    padding: 140px 8% 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+
+    background:
+        linear-gradient(120deg,
+        rgba(0,72,135,0.95),
+        rgba(0,151,218,0.85)),
+        url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80");
+
+    background-size: cover;
+    background-position: center;
+
+    color: white;
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.hero-text small {
+    letter-spacing: 3px;
+    color: #8ee4ff;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: 55px;
+    line-height: 1.1;
+    margin: 20px 0;
+}
+
+.hero h1 span {
+    color: #74dcff;
+}
+
+.hero p {
+    font-size: 19px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    color: #e5f7ff;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: white;
+    color: #0568a8;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* HERO CARD */
+.hero-card {
+    width: 300px;
+    padding: 35px;
+    text-align: center;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.logo-campus {
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    border-radius: 50%;
+    background: white;
+    color: #0568a8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.hero-card h3 {
+    margin: 20px 0 10px;
+}
+
+/* SECTION */
+section {
+    padding: 90px 8%;
+}
+
+.judul {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.judul small {
+    color: #0784c9;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.judul h2 {
+    font-size: 38px;
+    margin-top: 10px;
+}
+
+/* PROFIL */
+.profil {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.profil img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.profil-text h3 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.profil-text p {
+    color: #607487;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* KEUNGGULAN */
+.keunggulan {
+    background: #eef7ff;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,70,130,0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,70,130,0.15);
+}
+
+.icon {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 12px;
+    font-size: 21px;
+}
+
+.card p {
+    color: #66798c;
+    line-height: 1.7;
+}
+
+/* STATISTIK */
+.statistik {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.stat {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+}
+
+.stat h2 {
+    color: #0784c9;
+    font-size: 38px;
+}
+
+.stat p {
+    color: #66798c;
+}
+
+/* CTA */
+.cta {
+    padding: 80px 8%;
+    text-align: center;
+    background: linear-gradient(120deg, #00579a, #009fe3);
+    color: white;
+}
+
+.cta h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.cta p {
+    margin-bottom: 30px;
+}
+
+/* FOOTER */
+footer {
+    background: #052f52;
+    color: white;
+    padding: 45px 8%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+footer h3 {
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #b8d0e2;
+    margin-top: 5px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 800px) {
+
+    nav {
+        padding: 15px 5%;
+    }
+
+    nav ul {
+        gap: 12px;
+        font-size: 13px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 130px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero-card {
+        width: 280px;
+    }
+
+    .profil {
+        grid-template-columns: 1fr;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .statistik {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    footer {
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media(max-width: 500px) {
+
+    .logo {
+        font-size: 16px;
+    }
+
+    nav ul {
+        gap: 8px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .statistik {
+        grid-template-columns: 1fr;
+    }
+
+    .judul h2 {
+        font-size: 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+
+    <div class="logo">
+        UMPKU<span>.</span>
+    </div>
+
+    <ul>
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#profil">Profil</a></li>
+        <li><a href="#fasilitas">Fasilitas</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+<header class="hero" id="beranda">
+
+    <div class="hero-text">
+
+        <small>UNIVERSITAS MUHAMMADIYAH PKU SURAKARTA</small>
+
+        <h1>
+            Membangun Generasi
+            <span>Berkemajuan</span>
+        </h1>
+
+        <p>
+            Universitas Muhammadiyah PKU Surakarta hadir untuk
+            menciptakan pendidikan yang unggul, inovatif, dan
+            berlandaskan nilai-nilai Islami.
+        </p>
+
+        <a href="#profil" class="btn">
+            Jelajahi Kampus →
+        </a>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <div class="logo-campus">
+            UMPKU
+        </div>
+
+        <h3>Kampus Berkemajuan</h3>
+
+        <p>
+            Pendidikan • Teknologi • Karakter
+        </p>
+
+    </div>
+
+</header>
+
+
+<!-- PROFIL -->
+<section id="profil">
+
+    <div class="judul">
+
+        <small>TENTANG KAMI</small>
+
+        <h2>Profil Kampus</h2>
+
+    </div>
+
+
+    <div class="profil">
+
+        <img
+        src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=900&q=80"
+        alt="Gedung Kampus">
+
+
+        <div class="profil-text">
+
+            <h3>Universitas Muhammadiyah PKU Surakarta</h3>
+
+            <p>
+                Universitas Muhammadiyah PKU Surakarta merupakan
+                perguruan tinggi yang berkomitmen dalam memberikan
+                pendidikan berkualitas kepada mahasiswa.
+            </p>
+
+            <p>
+                Dengan perkembangan teknologi yang semakin pesat,
+                mahasiswa didorong untuk memiliki kemampuan akademik,
+                keterampilan teknologi, serta karakter yang baik.
+            </p>
+
+            <p>
+                Lingkungan pembelajaran yang inovatif menjadi salah
+                satu bagian penting dalam mempersiapkan mahasiswa
+                menghadapi dunia kerja dan perkembangan zaman.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FASILITAS -->
+<section class="keunggulan" id="fasilitas">
+
+    <div class="judul">
+
+        <small>FASILITAS</small>
+
+        <h2>Layanan & Fasilitas</h2>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="icon">📚</div>
+
+            <h3>Perpustakaan</h3>
+
+            <p>
+                Mendukung mahasiswa dalam mendapatkan berbagai
+                sumber informasi dan referensi pembelajaran.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">💻</div>
+
+            <h3>Pembelajaran Digital</h3>
+
+            <p>
+                Pemanfaatan teknologi digital untuk menunjang
+                proses pembelajaran mahasiswa.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🔬</div>
+
+            <h3>Laboratorium</h3>
+
+            <p>
+                Fasilitas laboratorium untuk mendukung kegiatan
+                praktikum dan pengembangan keterampilan mahasiswa.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STATISTIK -->
+<section>
+
+    <div class="judul">
+
+        <small>KEHIDUPAN KAMPUS</small>
+
+        <h2>UMPKU Dalam Angka</h2>
+
+    </div>
+
+
+    <div class="statistik">
+
+        <div class="stat">
+            <h2>20+</h2>
+            <p>Program Pendidikan</p>
+        </div>
+
+        <div class="stat">
+            <h2>1000+</h2>
+            <p>Mahasiswa</p>
+        </div>
+
+        <div class="stat">
+            <h2>50+</h2>
+            <p>Dosen & Tenaga Pengajar</p>
+        </div>
+
+        <div class="stat">
+            <h2>10+</h2>
+            <p>Fasilitas Pendidikan</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+<section class="cta">
+
+    <h2>Mulai Perjalananmu Bersama UMPKU</h2>
+
+    <p>
+        Belajar, berkembang, dan menjadi bagian dari generasi
+        yang berkemajuan.
+    </p>
+
+    <a href="#beranda" class="btn">
+        Kembali ke Atas ↑
+    </a>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer id="kontak">
+
+    <div>
+
+        <h3>Universitas Muhammadiyah PKU Surakarta</h3>
+
+        <p>
+            Praktikum Pemrograman Web
+        </p>
+
+        <p>
+            Website Profil Kampus
+        </p>
+
+    </div>
+
+
+    <div>
+
+        <h3>Kontak</h3>
+
+        <p>📍 Surakarta, Jawa Tengah</p>
+
+        <p>🌐 Website Kampus</p>
+
+        <p>📧 Informasi Akademik</p>
+
+    </div>
+
+
+    <div>
+
+        <h3>Copyright</h3>
+
+        <p>
+            © 2026 Berlian Cahya
+        </p>
+
+        <p>
+            Mahasiswa Elektromedis
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
+```
