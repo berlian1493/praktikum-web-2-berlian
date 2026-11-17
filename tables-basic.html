@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabel Data Alat Elektromedis - SIM-Elektromedis Rumah Sakit</title>
+
+  <!-- SEO Optimization -->
+  <meta name="description" content="Tabel Data Alat Elektromedis - SIM-Elektromedis Rumah Sakit">
+  <meta name="author" content="IPSRS Elektromedis Team">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.ico">
+
+  <!-- Local Third-Party Libraries (100% Offline Compatible) -->
+  <link rel="stylesheet" href="assets/libs/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/libs/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/libs/apexcharts/apexcharts.css">
+  <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css">
+
+  <!-- Main Design System & Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <!-- Auth Guard Script -->
+  <script src="assets/js/auth.js"></script>
+  <script>
+    if (!Auth.isLoggedIn()) {
+      window.location.replace('page-login.html?auth=required');
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- ==========================================
+         START: Sidebar Component
+         ========================================== -->
+  <div class="sidebar-wrapper" id="sidebar">
+    <!-- Brand Logo / Identity -->
+    <a href="index.html" class="sidebar-brand text-decoration-none">
+      <i class="bi bi-heart-pulse-fill" style="color: #B4F105;"></i>
+      <span>SIM-Elektromedis</span>
+    </a>
+
+    <!-- Navigation Menu -->
+    <div class="flex-grow-1 overflow-y-auto">
+      <!-- Group: Menu -->
+      <div class="sidebar-menu-section">
+        <div class="sidebar-menu-title">Menu Utama</div>
+        <ul class="sidebar-menu-list">
+          <li class="sidebar-menu-item">
+            <a href="index.html" class="sidebar-menu-link" id="menu-overview" title="Dashboard">
+              <i class="bi bi-grid-fill"></i>
+              <span>Dashboard & Inventaris</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="tables-basic.html" class="sidebar-menu-link active" id="menu-basictables" title="Daftar Lengkap Alat">
+              <i class="bi bi-table"></i>
+              <span>Tabel Alat Elektromedis</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Group: Komponen -->
+      <div class="sidebar-menu-section">
+        <div class="sidebar-menu-title">Aksi & Fitur</div>
+        <ul class="sidebar-menu-list">
+          <li class="sidebar-menu-item">
+            <a href="javascript:void(0)" class="sidebar-menu-link" data-bs-toggle="modal" data-bs-target="#modalTambahAlat" title="Tambah Alat">
+              <i class="bi bi-plus-circle-fill"></i>
+              <span>+ Tambah Alat Baru</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="ui-forms.html" class="sidebar-menu-link" id="menu-uiforms" title="Forms and Input">
+              <i class="bi bi-input-cursor-text"></i>
+              <span>Komponen Form</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="ui-buttons.html" class="sidebar-menu-link" id="menu-uibuttons" title="Buttons">
+              <i class="bi bi-menu-button-wide-fill"></i>
+              <span>Tombol & Notifikasi</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Group: Akun -->
+      <div class="sidebar-menu-section">
+        <div class="sidebar-menu-title">Akun & Sistem</div>
+        <ul class="sidebar-menu-list">
+          <li class="sidebar-menu-item">
+            <a href="page-login.html" class="sidebar-menu-link btn-logout-action" title="Keluar">
+              <i class="bi bi-box-arrow-right text-danger"></i>
+              <span class="text-danger">Logout / Keluar</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sidebar Profile Card -->
+    <div class="sidebar-profile">
+      <img src="assets/images/avatar.png" alt="Foto Profil" class="sidebar-profile-img user-avatar-display"
+        onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop'">
+      <div class="sidebar-profile-info">
+        <div class="sidebar-profile-name user-name-display">Ahmad Fauzi, A.Md.EM</div>
+        <div class="sidebar-profile-email user-email-display">Kepala IPSRS / Elektromedis</div>
+      </div>
+    </div>
+  </div>
+  <!-- ==========================================
+         END: Sidebar Component
+         ========================================== -->
+
+
+  <!-- ==========================================
+         START: Main Content Area
+         ========================================== -->
+  <div class="main-wrapper">
+
+    <!-- START: Top Navbar Component -->
+    <header class="navbar-custom">
+      <div class="navbar-left">
+        <button class="btn-desktop-toggle d-none d-xl-flex align-items-center justify-content-center me-3"
+          id="desktop-sidebar-toggle" aria-label="Minimize Sidebar">
+          <i class="bi bi-chevron-bar-left"></i>
+        </button>
+        <button class="sidebar-toggle-btn me-2" id="sidebar-toggle" aria-label="Toggle Navigation">
+          <i class="bi bi-list"></i>
+        </button>
+
+        <div class="dropdown ms-2">
+          <button class="btn-quick-action dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+            id="quick-actions-dropdown">
+            <i class="bi bi-plus-lg"></i>
+            <span>Tindakan</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-quick-action" aria-labelledby="quick-actions-dropdown">
+            <li class="dropdown-header">Aksi Inventaris</li>
+            <li><a class="dropdown-item" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modalTambahAlat"><i class="bi bi-plus-circle text-success"></i> Tambah Alat Elektromedis</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)" onclick="ElektromedisApp.exportCSV()"><i class="bi bi-file-earmark-arrow-down text-primary"></i> Ekspor CSV</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)" onclick="window.print()"><i class="bi bi-printer text-info"></i> Cetak Laporan</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mid navbar: search pill -->
+      <div class="navbar-search-wrapper">
+        <input type="text" class="navbar-search-input" placeholder="Cari alat elektromedis, merk, nomor seri..." id="main-search">
+        <button class="navbar-search-btn" aria-label="Search">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+
+      <!-- Right actions -->
+      <div class="navbar-actions">
+        <button class="navbar-action-btn me-1" aria-label="Toggle Fullscreen" id="btn-fullscreen">
+          <i class="bi bi-arrows-fullscreen"></i>
+        </button>
+
+        <!-- Profile Dropdown -->
+        <div class="dropdown ms-2">
+          <button class="navbar-profile-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false" id="profile-dropdown">
+            <img src="assets/images/avatar.png" alt="Profile Image" class="navbar-profile-img user-avatar-display">
+            <span class="navbar-profile-name d-none d-md-inline user-name-display">Ahmad Fauzi, A.Md.EM</span>
+            <i class="bi bi-chevron-down navbar-profile-caret"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-profile" aria-labelledby="profile-dropdown">
+            <li class="dropdown-header">Informasi Teknisi</li>
+            <li><a class="dropdown-item" href="index.html"><i class="bi bi-grid"></i> Dashboard</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="javascript:void(0)" onclick="Auth.logout()"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- END: Top Navbar Component -->
+
+    <!-- START: Page Header Banner -->
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Daftar Lengkap Alat Elektromedis</h1>
+        <p class="page-subtitle">Pencatatan inventaris alat kesehatan, merk, nomor seri, tahun pengadaan, dan status kalibrasi.</p>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn-custom btn-custom-secondary" onclick="ElektromedisApp.exportCSV()">
+          <i class="bi bi-file-earmark-arrow-down"></i>
+          <span>Ekspor CSV</span>
+        </button>
+        <button class="btn-custom btn-custom-primary" data-bs-toggle="modal" data-bs-target="#modalTambahAlat">
+          <i class="bi bi-plus-lg"></i>
+          <span>+ Tambah Alat</span>
+        </button>
+      </div>
+    </div>
+    <!-- END: Page Header Banner -->
+
+    <!-- START: Basic Table Card Container -->
+    <div class="table-card-custom mb-4">
+      <!-- Header Controls -->
+      <div class="table-header-control">
+        <!-- Search bar -->
+        <div class="table-search-box">
+          <i class="bi bi-search table-search-icon"></i>
+          <input type="text" class="table-search-input" id="tableSearchInput" placeholder="Cari nama alat, merk, tipe, no seri, ruangan...">
+        </div>
+
+        <!-- Action buttons / Filter options -->
+        <div class="table-filter-group d-flex flex-wrap gap-2 align-items-center">
+          <select class="form-select form-select-sm" id="filterRuanganSelect" style="border-radius: 8px; font-size: 0.82rem; min-width: 150px;">
+            <option value="">Semua Ruangan</option>
+            <option value="IGD">IGD (Gawat Darurat)</option>
+            <option value="ICU">ICU (Intensif)</option>
+            <option value="Kamar Operasi">Kamar Operasi (OK)</option>
+            <option value="Poli Jantung">Poli Jantung</option>
+            <option value="Poli Kandungan">Poli Kandungan</option>
+            <option value="Radiologi">Radiologi</option>
+            <option value="NICU">NICU / Perinatologi</option>
+            <option value="Hemodialisa">Unit Hemodialisa</option>
+            <option value="Rawat Inap">Rawat Inap</option>
+            <option value="CSSD">CSSD</option>
+          </select>
+
+          <select class="form-select form-select-sm" id="filterStatusSelect" style="border-radius: 8px; font-size: 0.82rem; min-width: 140px;">
+            <option value="">Semua Status</option>
+            <option value="Laik Pakai">Laik Pakai</option>
+            <option value="Perlu Kalibrasi">Perlu Kalibrasi</option>
+            <option value="Dalam Perbaikan">Dalam Perbaikan</option>
+          </select>
+
+          <select class="form-select form-select-sm" id="filterTahunSelect" style="border-radius: 8px; font-size: 0.82rem; min-width: 120px;">
+            <option value="">Semua Tahun</option>
+            <option value="2024">Tahun 2024</option>
+            <option value="2023">Tahun 2023</option>
+            <option value="2022">Tahun 2022</option>
+            <option value="2021">Tahun 2021</option>
+            <option value="2020">Tahun 2020</option>
+          </select>
+
+          <button class="btn btn-sm btn-outline-secondary" type="button" id="btnResetFilter" title="Reset Filter" style="border-radius: 8px; font-size: 0.82rem;">
+            <i class="bi bi-x-circle"></i> Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Responsive Table Wrapper -->
+      <div class="table-responsive">
+        <table class="table-custom mb-0" id="tabelElektromedis">
+          <thead>
+            <tr>
+              <th>No. Seri / Aset</th>
+              <th>Nama Alat Elektromedis</th>
+              <th>Merk & Model</th>
+              <th>Tahun</th>
+              <th>Ruangan / Unit</th>
+              <th>Kondisi Kelaikan</th>
+              <th>Jadwal Kalibrasi</th>
+              <th class="text-center">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="tableBodyAlat">
+            <!-- Baris 1 -->
+            <tr>
+              <td class="table-order-id">
+                <span class="fw-bold">EM-2023-001</span>
+                <div class="text-muted small" style="font-size: 0.72rem;">SN-D3-2023-8819</div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="table-device-icon"><i class="bi bi-heart-pulse"></i></div>
+                  <div>
+                    <div class="table-user-name">Defibrillator Biphasic + Pacer</div>
+                    <div class="table-user-sub"><span class="badge bg-light text-dark border">Life Support</span></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="fw-bold text-main">Mindray</div>
+                <div class="text-muted-green small">BeneHeart D3</div>
+              </td>
+              <td><span class="badge bg-forest-light text-lime px-2 py-1">2023</span></td>
+              <td>
+                <div class="d-flex align-items-center gap-1 small text-main fw-semibold">
+                  <i class="bi bi-geo-alt-fill text-muted-green"></i> <span>Instalasi Gawat Darurat (IGD)</span>
+                </div>
+              </td>
+              <td><span class="badge-table success"><i class="bi bi-check-circle-fill"></i> Laik Pakai</span></td>
+              <td>
+                <div class="small fw-semibold text-main"><i class="bi bi-calendar-event me-1 text-muted-green"></i> 2026-08-10</div>
+                <div class="text-muted small" style="font-size: 0.72rem;">Uji: 2025-08-10</div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Detail Alat" onclick="openDetailModal('EM-2023-001')"><i class="bi bi-eye"></i></button>
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Edit Alat" onclick="openEditModal('EM-2023-001')"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-light border text-danger py-1 px-2" title="Hapus Alat" onclick="openDeleteModal('EM-2023-001', 'Defibrillator Biphasic + Pacer')"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Baris 2 -->
+            <tr>
+              <td class="table-order-id">
+                <span class="fw-bold">EM-2023-002</span>
+                <div class="text-muted small" style="font-size: 0.72rem;">SN-NK-2023-1102</div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="table-device-icon"><i class="bi bi-activity"></i></div>
+                  <div>
+                    <div class="table-user-name">Elektrokardiograf (EKG 12-Lead)</div>
+                    <div class="table-user-sub"><span class="badge bg-light text-dark border">Diagnostik</span></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="fw-bold text-main">Nihon Kohden</div>
+                <div class="text-muted-green small">Cardiofax M ECG-1350K</div>
+              </td>
+              <td><span class="badge bg-forest-light text-lime px-2 py-1">2023</span></td>
+              <td>
+                <div class="d-flex align-items-center gap-1 small text-main fw-semibold">
+                  <i class="bi bi-geo-alt-fill text-muted-green"></i> <span>Poli Jantung & Pembuluh Darah</span>
+                </div>
+              </td>
+              <td><span class="badge-table success"><i class="bi bi-check-circle-fill"></i> Laik Pakai</span></td>
+              <td>
+                <div class="small fw-semibold text-main"><i class="bi bi-calendar-event me-1 text-muted-green"></i> 2026-06-14</div>
+                <div class="text-muted small" style="font-size: 0.72rem;">Uji: 2025-06-14</div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Detail Alat" onclick="openDetailModal('EM-2023-002')"><i class="bi bi-eye"></i></button>
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Edit Alat" onclick="openEditModal('EM-2023-002')"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-light border text-danger py-1 px-2" title="Hapus Alat" onclick="openDeleteModal('EM-2023-002', 'Elektrokardiograf (EKG 12-Lead)')"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Baris 3 -->
+            <tr>
+              <td class="table-order-id">
+                <span class="fw-bold">EM-2022-003</span>
+                <div class="text-muted small" style="font-size: 0.72rem;">SN-DR-2022-4401</div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="table-device-icon"><i class="bi bi-heart-pulse"></i></div>
+                  <div>
+                    <div class="table-user-name">Ventilator Mekanik ICU Adult & Pediatric</div>
+                    <div class="table-user-sub"><span class="badge bg-light text-dark border">Life Support</span></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="fw-bold text-main">Dräger</div>
+                <div class="text-muted-green small">Savina 300 Select</div>
+              </td>
+              <td><span class="badge bg-forest-light text-lime px-2 py-1">2022</span></td>
+              <td>
+                <div class="d-flex align-items-center gap-1 small text-main fw-semibold">
+                  <i class="bi bi-geo-alt-fill text-muted-green"></i> <span>Intensive Care Unit (ICU)</span>
+                </div>
+              </td>
+              <td><span class="badge-table success"><i class="bi bi-check-circle-fill"></i> Laik Pakai</span></td>
+              <td>
+                <div class="small fw-semibold text-main"><i class="bi bi-calendar-event me-1 text-muted-green"></i> 2026-10-05</div>
+                <div class="text-muted small" style="font-size: 0.72rem;">Uji: 2025-10-05</div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Detail Alat" onclick="openDetailModal('EM-2022-003')"><i class="bi bi-eye"></i></button>
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Edit Alat" onclick="openEditModal('EM-2022-003')"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-light border text-danger py-1 px-2" title="Hapus Alat" onclick="openDeleteModal('EM-2022-003', 'Ventilator Mekanik ICU')"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Baris 4 -->
+            <tr>
+              <td class="table-order-id">
+                <span class="fw-bold">EM-2024-004</span>
+                <div class="text-muted small" style="font-size: 0.72rem;">SN-MR-2024-9021</div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="table-device-icon"><i class="bi bi-activity"></i></div>
+                  <div>
+                    <div class="table-user-name">Patient Monitor 5-Parameter</div>
+                    <div class="table-user-sub"><span class="badge bg-light text-dark border">Diagnostik</span></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="fw-bold text-main">Mindray</div>
+                <div class="text-muted-green small">uMEC10 Vital Signs</div>
+              </td>
+              <td><span class="badge bg-forest-light text-lime px-2 py-1">2024</span></td>
+              <td>
+                <div class="d-flex align-items-center gap-1 small text-main fw-semibold">
+                  <i class="bi bi-geo-alt-fill text-muted-green"></i> <span>Intensive Care Unit (ICU)</span>
+                </div>
+              </td>
+              <td><span class="badge-table success"><i class="bi bi-check-circle-fill"></i> Laik Pakai</span></td>
+              <td>
+                <div class="small fw-semibold text-main"><i class="bi bi-calendar-event me-1 text-muted-green"></i> 2026-09-12</div>
+                <div class="text-muted small" style="font-size: 0.72rem;">Uji: 2025-09-12</div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Detail Alat" onclick="openDetailModal('EM-2024-004')"><i class="bi bi-eye"></i></button>
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Edit Alat" onclick="openEditModal('EM-2024-004')"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-light border text-danger py-1 px-2" title="Hapus Alat" onclick="openDeleteModal('EM-2024-004', 'Patient Monitor 5-Parameter')"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Baris 5 -->
+            <tr>
+              <td class="table-order-id">
+                <span class="fw-bold">EM-2023-005</span>
+                <div class="text-muted small" style="font-size: 0.72rem;">SN-TR-2023-6624</div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="table-device-icon"><i class="bi bi-droplet-half"></i></div>
+                  <div>
+                    <div class="table-user-name">Syringe Pump Micro & Macro</div>
+                    <div class="table-user-sub"><span class="badge bg-light text-dark border">Terapeutik</span></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="fw-bold text-main">Terumo</div>
+                <div class="text-muted-green small">TE-SS700 Smart</div>
+              </td>
+              <td><span class="badge bg-forest-light text-lime px-2 py-1">2023</span></td>
+              <td>
+                <div class="d-flex align-items-center gap-1 small text-main fw-semibold">
+                  <i class="bi bi-geo-alt-fill text-muted-green"></i> <span>Intensive Care Unit (ICU)</span>
+                </div>
+              </td>
+              <td><span class="badge-table success"><i class="bi bi-check-circle-fill"></i> Laik Pakai</span></td>
+              <td>
+                <div class="small fw-semibold text-main"><i class="bi bi-calendar-event me-1 text-muted-green"></i> 2026-07-20</div>
+                <div class="text-muted small" style="font-size: 0.72rem;">Uji: 2025-07-20</div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Detail Alat" onclick="openDetailModal('EM-2023-005')"><i class="bi bi-eye"></i></button>
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Edit Alat" onclick="openEditModal('EM-2023-005')"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-light border text-danger py-1 px-2" title="Hapus Alat" onclick="openDeleteModal('EM-2023-005', 'Syringe Pump Micro & Macro')"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Baris 6 -->
+            <tr>
+              <td class="table-order-id">
+                <span class="fw-bold">EM-2024-006</span>
+                <div class="text-muted small" style="font-size: 0.72rem;">SN-BB-2024-1189</div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="table-device-icon"><i class="bi bi-droplet-half"></i></div>
+                  <div>
+                    <div class="table-user-name">Infusion Pump Volumetric</div>
+                    <div class="table-user-sub"><span class="badge bg-light text-dark border">Terapeutik</span></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="fw-bold text-main">B. Braun</div>
+                <div class="text-muted-green small">Infusomat Space</div>
+              </td>
+              <td><span class="badge bg-forest-light text-lime px-2 py-1">2024</span></td>
+              <td>
+                <div class="d-flex align-items-center gap-1 small text-main fw-semibold">
+                  <i class="bi bi-geo-alt-fill text-muted-green"></i> <span>Rawat Inap Melati (Lt. 3)</span>
+                </div>
+              </td>
+              <td><span class="badge-table success"><i class="bi bi-check-circle-fill"></i> Laik Pakai</span></td>
+              <td>
+                <div class="small fw-semibold text-main"><i class="bi bi-calendar-event me-1 text-muted-green"></i> 2026-11-02</div>
+                <div class="text-muted small" style="font-size: 0.72rem;">Uji: 2025-11-02</div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Detail Alat" onclick="openDetailModal('EM-2024-006')"><i class="bi bi-eye"></i></button>
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Edit Alat" onclick="openEditModal('EM-2024-006')"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-light border text-danger py-1 px-2" title="Hapus Alat" onclick="openDeleteModal('EM-2024-006', 'Infusion Pump Volumetric')"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Baris 7 -->
+            <tr>
+              <td class="table-order-id">
+                <span class="fw-bold">EM-2022-007</span>
+                <div class="text-muted small" style="font-size: 0.72rem;">SN-GE-2022-7715</div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="table-device-icon"><i class="bi bi-activity"></i></div>
+                  <div>
+                    <div class="table-user-name">Ultrasonografi (USG) Doppler 4D</div>
+                    <div class="table-user-sub"><span class="badge bg-light text-dark border">Diagnostik</span></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="fw-bold text-main">GE Healthcare</div>
+                <div class="text-muted-green small">Voluson E8 Expert</div>
+              </td>
+              <td><span class="badge bg-forest-light text-lime px-2 py-1">2022</span></td>
+              <td>
+                <div class="d-flex align-items-center gap-1 small text-main fw-semibold">
+                  <i class="bi bi-geo-alt-fill text-muted-green"></i> <span>Poli Kandungan & Kebidanan (Obgyn)</span>
+                </div>
+              </td>
+              <td><span class="badge-table success"><i class="bi bi-check-circle-fill"></i> Laik Pakai</span></td>
+              <td>
+                <div class="small fw-semibold text-main"><i class="bi bi-calendar-event me-1 text-muted-green"></i> 2026-05-18</div>
+                <div class="text-muted small" style="font-size: 0.72rem;">Uji: 2025-05-18</div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Detail Alat" onclick="openDetailModal('EM-2022-007')"><i class="bi bi-eye"></i></button>
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Edit Alat" onclick="openEditModal('EM-2022-007')"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-light border text-danger py-1 px-2" title="Hapus Alat" onclick="openDeleteModal('EM-2022-007', 'Ultrasonografi (USG) Doppler 4D')"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Baris 8 -->
+            <tr>
+              <td class="table-order-id">
+                <span class="fw-bold">EM-2021-008</span>
+                <div class="text-muted small" style="font-size: 0.72rem;">SN-SM-2021-3042</div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="table-device-icon"><i class="bi bi-broadcast-pin"></i></div>
+                  <div>
+                    <div class="table-user-name">Mobile X-Ray C-Arm Fluoroscopy</div>
+                    <div class="table-user-sub"><span class="badge bg-light text-dark border">Radiologi & Imaging</span></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="fw-bold text-main">Siemens Healthineers</div>
+                <div class="text-muted-green small">Cios Select</div>
+              </td>
+              <td><span class="badge bg-forest-light text-lime px-2 py-1">2021</span></td>
+              <td>
+                <div class="d-flex align-items-center gap-1 small text-main fw-semibold">
+                  <i class="bi bi-geo-alt-fill text-muted-green"></i> <span>Kamar Operasi (OK Bedah)</span>
+                </div>
+              </td>
+              <td><span class="badge-table pending"><i class="bi bi-clock-history"></i> Perlu Kalibrasi</span></td>
+              <td>
+                <div class="small fw-semibold text-main"><i class="bi bi-calendar-event me-1 text-muted-green"></i> 2025-11-15</div>
+                <div class="text-muted small" style="font-size: 0.72rem;">Uji: 2024-11-15</div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Detail Alat" onclick="openDetailModal('EM-2021-008')"><i class="bi bi-eye"></i></button>
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Edit Alat" onclick="openEditModal('EM-2021-008')"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-light border text-danger py-1 px-2" title="Hapus Alat" onclick="openDeleteModal('EM-2021-008', 'Mobile X-Ray C-Arm')"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Baris 9 -->
+            <tr>
+              <td class="table-order-id">
+                <span class="fw-bold">EM-2020-009</span>
+                <div class="text-muted small" style="font-size: 0.72rem;">SN-PH-2020-5591</div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="table-device-icon"><i class="bi bi-broadcast-pin"></i></div>
+                  <div>
+                    <div class="table-user-name">Stationary Digital Radiography (X-Ray)</div>
+                    <div class="table-user-sub"><span class="badge bg-light text-dark border">Radiologi & Imaging</span></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="fw-bold text-main">Philips</div>
+                <div class="text-muted-green small">DuraDiagnost Compact</div>
+              </td>
+              <td><span class="badge bg-forest-light text-lime px-2 py-1">2020</span></td>
+              <td>
+                <div class="d-flex align-items-center gap-1 small text-main fw-semibold">
+                  <i class="bi bi-geo-alt-fill text-muted-green"></i> <span>Instalasi Radiologi Ruang 1</span>
+                </div>
+              </td>
+              <td><span class="badge-table success"><i class="bi bi-check-circle-fill"></i> Laik Pakai</span></td>
+              <td>
+                <div class="small fw-semibold text-main"><i class="bi bi-calendar-event me-1 text-muted-green"></i> 2026-04-10</div>
+                <div class="text-muted small" style="font-size: 0.72rem;">Uji: 2025-04-10</div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Detail Alat" onclick="openDetailModal('EM-2020-009')"><i class="bi bi-eye"></i></button>
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Edit Alat" onclick="openEditModal('EM-2020-009')"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-light border text-danger py-1 px-2" title="Hapus Alat" onclick="openDeleteModal('EM-2020-009', 'Stationary Digital Radiography')"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Baris 10 -->
+            <tr>
+              <td class="table-order-id">
+                <span class="fw-bold">EM-2022-010</span>
+                <div class="text-muted small" style="font-size: 0.72rem;">SN-AT-2022-2290</div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="table-device-icon"><i class="bi bi-heart-pulse"></i></div>
+                  <div>
+                    <div class="table-user-name">Infant Incubator Perawatan Intensif</div>
+                    <div class="table-user-sub"><span class="badge bg-light text-dark border">Life Support</span></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="fw-bold text-main">Atom Medical</div>
+                <div class="text-muted-green small">Dual Incu i (Model 100)</div>
+              </td>
+              <td><span class="badge bg-forest-light text-lime px-2 py-1">2022</span></td>
+              <td>
+                <div class="d-flex align-items-center gap-1 small text-main fw-semibold">
+                  <i class="bi bi-geo-alt-fill text-muted-green"></i> <span>Neonatal ICU (NICU)</span>
+                </div>
+              </td>
+              <td><span class="badge-table success"><i class="bi bi-check-circle-fill"></i> Laik Pakai</span></td>
+              <td>
+                <div class="small fw-semibold text-main"><i class="bi bi-calendar-event me-1 text-muted-green"></i> 2026-08-25</div>
+                <div class="text-muted small" style="font-size: 0.72rem;">Uji: 2025-08-25</div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center gap-1">
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Detail Alat" onclick="openDetailModal('EM-2022-010')"><i class="bi bi-eye"></i></button>
+                  <button class="btn btn-sm btn-light border py-1 px-2" title="Edit Alat" onclick="openEditModal('EM-2022-010')"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-sm btn-light border text-danger py-1 px-2" title="Hapus Alat" onclick="openDeleteModal('EM-2022-010', 'Infant Incubator Perawatan Intensif')"><i class="bi bi-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Footer Controls / Pagination -->
+      <div class="table-footer-control">
+        <span class="table-pagination-info" id="tablePaginationInfo">Menampilkan 1 s/d 10 dari 10 data alat elektromedis</span>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-sm btn-outline-secondary" id="btnPrevPage" disabled><i class="bi bi-chevron-left"></i> Sebelumnya</button>
+          <span class="small fw-bold px-2" id="currentPageNumber">Hal 1 dari 1</span>
+          <button class="btn btn-sm btn-outline-secondary" id="btnNextPage" disabled>Berikutnya <i class="bi bi-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+    <!-- END: Basic Table Card Container -->
+
+    <!-- START: Footer Component -->
+    <footer class="footer-custom">
+      <div class="footer-left">
+        <span class="footer-logo">
+          <i class="bi bi-heart-pulse-fill text-lime"></i> SIM-Elektromedis RS
+        </span>
+        <span class="footer-separator">|</span>
+        <span class="footer-copy">&copy; 2026 Instalasi Pemeliharaan Sarana Rumah Sakit (IPSRS) &bull; Dikelola oleh Teknisi Elektromedis</span>
+      </div>
+      <div class="footer-right">
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Dashboard</a></li>
+          <li><a href="tables-basic.html" class="footer-link">Tabel Alat</a></li>
+          <li><a href="javascript:void(0)" onclick="ElektromedisApp.exportCSV()" class="footer-link">Ekspor CSV</a></li>
+        </ul>
+      </div>
+    </footer>
+    <!-- END: Footer Component -->
+
+  </div>
+  <!-- ==========================================
+         END: Main Content Area
+         ========================================== -->
+
+  <!-- Modal Tambah Alat, Edit Alat, Detail Alat, Hapus Alat -->
+  <div class="modal fade" id="modalTambahAlat" tabindex="-1" aria-labelledby="modalTambahAlatLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content modal-content-custom">
+        <div class="modal-header modal-header-custom">
+          <h5 class="modal-title fw-bold" id="modalTambahAlatLabel">
+            <i class="bi bi-plus-circle-fill text-lime me-2"></i> Tambah Alat Elektromedis Baru
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <form id="formTambahAlat">
+          <div class="modal-body p-4">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="inputNamaAlat" class="form-label fw-semibold">Nama Alat Elektromedis <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="inputNamaAlat" placeholder="Cth: Patient Monitor 5-Parameter" required>
+              </div>
+              <div class="col-md-3">
+                <label for="inputMerk" class="form-label fw-semibold">Merk / Brand <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="inputMerk" placeholder="Cth: Mindray" required>
+              </div>
+              <div class="col-md-3">
+                <label for="inputTipe" class="form-label fw-semibold">Tipe / Model <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="inputTipe" placeholder="Cth: uMEC10" required>
+              </div>
+              <div class="col-md-4">
+                <label for="inputNoSeri" class="form-label fw-semibold">Nomor Seri (S/N) <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="inputNoSeri" placeholder="Cth: SN-MR-2024-9021" required>
+              </div>
+              <div class="col-md-4">
+                <label for="inputTahun" class="form-label fw-semibold">Tahun Pengadaan <span class="text-danger">*</span></label>
+                <select class="form-select" id="inputTahun" required>
+                  <option value="2026">2026</option>
+                  <option value="2025">2025</option>
+                  <option value="2024" selected>2024</option>
+                  <option value="2023">2023</option>
+                  <option value="2022">2022</option>
+                  <option value="2021">2021</option>
+                  <option value="2020">2020</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="inputKategori" class="form-label fw-semibold">Kategori Alat <span class="text-danger">*</span></label>
+                <select class="form-select" id="inputKategori" required>
+                  <option value="Life Support">Life Support</option>
+                  <option value="Diagnostik" selected>Diagnostik</option>
+                  <option value="Terapeutik">Terapeutik</option>
+                  <option value="Bedah & OK">Bedah & OK</option>
+                  <option value="Radiologi & Imaging">Radiologi & Imaging</option>
+                  <option value="Sterilisasi & CSSD">Sterilisasi & CSSD</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="inputRuangan" class="form-label fw-semibold">Ruangan / Unit Kerja <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="inputRuangan" placeholder="Cth: Intensive Care Unit (ICU)" required>
+              </div>
+              <div class="col-md-6">
+                <label for="inputKondisi" class="form-label fw-semibold">Status Kelaikan <span class="text-danger">*</span></label>
+                <select class="form-select" id="inputKondisi" required>
+                  <option value="Laik Pakai" selected>Laik Pakai</option>
+                  <option value="Perlu Kalibrasi">Perlu Kalibrasi</option>
+                  <option value="Dalam Perbaikan">Dalam Perbaikan</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="inputTglKalibrasiTerakhir" class="form-label fw-semibold">Tgl Kalibrasi Terakhir</label>
+                <input type="date" class="form-control" id="inputTglKalibrasiTerakhir" value="2025-06-15">
+              </div>
+              <div class="col-md-6">
+                <label for="inputTglKalibrasiBerikutnya" class="form-label fw-semibold">Jadwal Kalibrasi Berikutnya</label>
+                <input type="date" class="form-control" id="inputTglKalibrasiBerikutnya" value="2026-06-15">
+              </div>
+              <div class="col-md-6">
+                <label for="inputPIC" class="form-label fw-semibold">Teknisi PIC</label>
+                <input type="text" class="form-control" id="inputPIC" value="Ahmad Fauzi, A.Md.EM">
+              </div>
+              <div class="col-md-6">
+                <label for="inputHarga" class="form-label fw-semibold">Nilai Aset / Harga</label>
+                <input type="text" class="form-control" id="inputHarga" placeholder="Cth: Rp 45.000.000">
+              </div>
+              <div class="col-12">
+                <label for="inputKeterangan" class="form-label fw-semibold">Keterangan Kondisi</label>
+                <textarea class="form-control" id="inputKeterangan" rows="2"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer bg-light">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #072F1F; border-color: #072F1F;">Simpan Data</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Edit Alat -->
+  <div class="modal fade" id="modalEditAlat" tabindex="-1" aria-labelledby="modalEditAlatLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content modal-content-custom">
+        <div class="modal-header modal-header-custom">
+          <h5 class="modal-title fw-bold" id="modalEditAlatLabel">Edit Data Alat Elektromedis</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <form id="formEditAlat">
+          <input type="hidden" id="editId">
+          <div class="modal-body p-4">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="editNamaAlat" class="form-label fw-semibold">Nama Alat Elektromedis</label>
+                <input type="text" class="form-control" id="editNamaAlat" required>
+              </div>
+              <div class="col-md-3">
+                <label for="editMerk" class="form-label fw-semibold">Merk</label>
+                <input type="text" class="form-control" id="editMerk" required>
+              </div>
+              <div class="col-md-3">
+                <label for="editTipe" class="form-label fw-semibold">Tipe</label>
+                <input type="text" class="form-control" id="editTipe" required>
+              </div>
+              <div class="col-md-4">
+                <label for="editNoSeri" class="form-label fw-semibold">No. Seri</label>
+                <input type="text" class="form-control" id="editNoSeri" required>
+              </div>
+              <div class="col-md-4">
+                <label for="editTahun" class="form-label fw-semibold">Tahun</label>
+                <input type="number" class="form-control" id="editTahun" required>
+              </div>
+              <div class="col-md-4">
+                <label for="editKondisi" class="form-label fw-semibold">Status Kelaikan</label>
+                <select class="form-select" id="editKondisi" required>
+                  <option value="Laik Pakai">Laik Pakai</option>
+                  <option value="Perlu Kalibrasi">Perlu Kalibrasi</option>
+                  <option value="Dalam Perbaikan">Dalam Perbaikan</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="editRuangan" class="form-label fw-semibold">Ruangan</label>
+                <input type="text" class="form-control" id="editRuangan" required>
+              </div>
+              <div class="col-md-6">
+                <label for="editTglKalibrasiBerikutnya" class="form-label fw-semibold">Jadwal Kalibrasi Berikutnya</label>
+                <input type="date" class="form-control" id="editTglKalibrasiBerikutnya">
+              </div>
+              <div class="col-12">
+                <label for="editKeterangan" class="form-label fw-semibold">Keterangan</label>
+                <textarea class="form-control" id="editKeterangan" rows="2"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer bg-light">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #072F1F; border-color: #072F1F;">Perbarui Data</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Detail Alat -->
+  <div class="modal fade" id="modalDetailAlat" tabindex="-1" aria-labelledby="modalDetailAlatLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content modal-content-custom">
+        <div class="modal-header modal-header-custom">
+          <div>
+            <h5 class="modal-title fw-bold text-white mb-0" id="modalDetailAlatLabel">Lembar Inventaris Alat Elektromedis</h5>
+            <span class="small text-white-50" id="detailIdDisplay">ID: EM-2023-001</span>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body p-4" id="detailModalBody"></div>
+        <div class="modal-footer bg-light">
+          <button type="button" class="btn btn-outline-secondary" onclick="window.print()">Cetak</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Konfirmasi Hapus -->
+  <div class="modal fade" id="modalHapusAlat" tabindex="-1" aria-labelledby="modalHapusAlatLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content modal-content-custom">
+        <div class="modal-body p-4 text-center">
+          <div class="text-danger mb-3" style="font-size: 3rem;">
+            <i class="bi bi-exclamation-circle-fill"></i>
+          </div>
+          <h5 class="fw-bold mb-2">Hapus Alat Medis?</h5>
+          <p class="text-muted small mb-4">Apakah Anda yakin ingin menghapus <strong id="hapusNamaAlat">-</strong>?</p>
+          <input type="hidden" id="hapusIdAlat">
+          <div class="d-flex justify-content-center gap-2">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="button" class="btn btn-danger" id="btnKonfirmasiHapus">Ya, Hapus</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Local Third-Party Libraries Script dependencies -->
+  <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
+
+  <!-- App Data & Interactions controller -->
+  <script src="assets/js/elektromedis.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+
+</html>

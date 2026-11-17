@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk Sistem - Inventaris Alat Elektromedis RS</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.ico">
+    
+    <!-- Local Third-Party Libraries (100% Offline Compatible) -->
+    <link rel="stylesheet" href="assets/libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/libs/bootstrap-icons/bootstrap-icons.css">
+    
+    <!-- Main Design System & Custom Stylesheet -->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+    <!-- ==========================================
+         START: Authentication Container & Login Card
+         ========================================== -->
+    <div class="login-wrapper">
+        <!-- Glowing background shapes for modern visual appearance -->
+        <div class="login-bg-shape login-bg-shape-1"></div>
+        <div class="login-bg-shape login-bg-shape-2"></div>
+        
+        <!-- Main centered login card -->
+        <div class="login-card">
+            
+            <!-- Brand Identity -->
+            <a href="page-login.html" class="login-brand text-decoration-none">
+                <i class="bi bi-heart-pulse-fill" style="color: #B4F105;"></i>
+                <span>SIM-Elektromedis</span>
+            </a>
+            
+            <p class="login-subtitle">Sistem Informasi Inventaris & Pemeliharaan Alat Elektromedis Rumah Sakit</p>
+            
+            <!-- Dynamic Alert Container -->
+            <div id="loginAlert" class="alert alert-danger d-none py-2 px-3 mb-3 small" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-1"></i>
+                <span id="loginAlertText">Username atau password salah!</span>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="needs-validation" novalidate>
+                
+                <!-- Username Input Group -->
+                <div class="login-form-group">
+                    <label for="username" class="login-form-label">Username / ID Pegawai</label>
+                    <div class="login-input-group">
+                        <i class="bi bi-person-badge input-icon"></i>
+                        <input type="text" id="username" class="login-input" placeholder="Masukkan username (cth: admin)" required autofocus>
+                    </div>
+                </div>
+                
+                <!-- Password Input Group -->
+                <div class="login-form-group">
+                    <label for="password" class="login-form-label">Password</label>
+                    <div class="login-input-group">
+                        <i class="bi bi-shield-lock input-icon"></i>
+                        <input type="password" id="password" class="login-input login-input-password" placeholder="Masukkan password (cth: admin123)" required>
+                        <button type="button" class="password-toggle-btn" id="toggle-password" aria-label="Tampilkan password">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Options (Remember me & Forgot Password) -->
+                <div class="login-options">
+                    <label class="custom-control-label">
+                        <input type="checkbox" class="custom-checkbox-input" id="rememberMe" checked>
+                        <span>Ingat Saya</span>
+                    </label>
+                    <a href="javascript:void(0)" onclick="fillDemoCredentials()" class="forgot-password-link">Lupa Password?</a>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="btn-login" id="btn-submit">
+                    <span>Masuk ke Sistem Inventaris</span>
+                    <i class="bi bi-arrow-right"></i>
+                </button>
+                
+            </form>
+            
+            <!-- Demo Credentials Helper Card -->
+            <div class="card mt-3 p-3 border-0" style="background-color: rgba(26, 62, 48, 0.45); border-radius: 12px;">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <span class="small fw-bold" style="color: #B4F105;">
+                        <i class="bi bi-key-fill me-1"></i> Akun Akses Demo (IPSRS):
+                    </span>
+                    <button type="button" class="btn btn-sm py-0 px-2 fw-bold" style="background-color: #B4F105; color: #051C12; font-size: 0.72rem; border-radius: 6px;" onclick="fillDemoCredentials()">
+                        Isi Cepat
+                    </button>
+                </div>
+                <div class="d-flex flex-column gap-1 small text-white-50" style="font-size: 0.8rem;">
+                    <div>• <strong>Admin / Ka. IPSRS:</strong> <code>admin</code> / <code>admin123</code></div>
+                    <div>• <strong>Teknisi Lapangan:</strong> <code>teknisi</code> / <code>teknisi123</code></div>
+                </div>
+            </div>
+            
+            <!-- Footer Link -->
+            <p class="login-footer-text mt-3 mb-0">
+                Instalasi Pemeliharaan Sarana Rumah Sakit (IPSRS) &bull; Balai Pengamanan Fasilitas Kesehatan (BPFK)
+            </p>
+            
+        </div>
+    </div>
+    <!-- END: Authentication Container -->
+
+    <!-- Local Bootstrap bundle -->
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Authentication script -->
+    <script src="assets/js/auth.js"></script>
+
+    <script>
+        // Cek jika pengguna sudah login sebelumnya
+        document.addEventListener('DOMContentLoaded', function () {
+            // Jika sudah login, langsung ke index.html
+            if (Auth.isLoggedIn()) {
+                window.location.replace('index.html');
+                return;
+            }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const alertBox = document.getElementById('loginAlert');
+            const alertText = document.getElementById('loginAlertText');
+
+            if (urlParams.get('auth') === 'required') {
+                alertBox.className = 'alert alert-warning py-2 px-3 mb-3 small';
+                alertText.textContent = 'Silakan masuk dengan akun Anda untuk mengakses data inventaris alat elektromedis.';
+                alertBox.classList.remove('d-none');
+            } else if (urlParams.get('logout') === 'true') {
+                alertBox.className = 'alert alert-info py-2 px-3 mb-3 small';
+                alertText.textContent = 'Anda telah berhasil keluar dari sistem.';
+                alertBox.classList.remove('d-none');
+            }
+
+            // Handle Form Submission
+            const form = document.getElementById('loginForm');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const usernameInput = document.getElementById('username');
+                const passwordInput = document.getElementById('password');
+                const rememberMe = document.getElementById('rememberMe').checked;
+
+                const res = Auth.login(usernameInput.value, passwordInput.value, rememberMe);
+                if (res.success) {
+                    alertBox.className = 'alert alert-success py-2 px-3 mb-3 small';
+                    alertText.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i> Login berhasil! Memuat data inventaris...';
+                    alertBox.classList.remove('d-none');
+
+                    const redirectUrl = urlParams.get('redirect') || 'index.html';
+                    setTimeout(() => {
+                        window.location.replace(redirectUrl);
+                    }, 400);
+                } else {
+                    alertBox.className = 'alert alert-danger py-2 px-3 mb-3 small';
+                    alertText.innerHTML = `<i class="bi bi-exclamation-triangle-fill me-1"></i> ${res.message || 'Username atau password salah!'}`;
+                    alertBox.classList.remove('d-none');
+                }
+            });
+        });
+
+        // Helper untuk mengisi akun demo secara instan
+        function fillDemoCredentials() {
+            document.getElementById('username').value = 'admin';
+            document.getElementById('password').value = 'admin123';
+            const alertBox = document.getElementById('loginAlert');
+            const alertText = document.getElementById('loginAlertText');
+            alertBox.className = 'alert alert-success py-2 px-3 mb-3 small';
+            alertText.innerHTML = '<i class="bi bi-info-circle-fill me-1"></i> Kredensial Admin terisi otomatis. Klik tombol <strong>"Masuk ke Sistem Inventaris"</strong>.';
+            alertBox.classList.remove('d-none');
+        }
+    </script>
+</body>
+</html>
